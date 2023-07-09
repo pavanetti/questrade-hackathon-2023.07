@@ -2,10 +2,10 @@ import { Text } from "@/components/text";
 import { moneyFromNumber } from "@/shared/utils";
 import { Card } from "@nextui-org/react";
 
-interface CreditOptionBoxProps {
+export interface CreditOptionBoxProps {
   installments: number;
-  min: number;
-  max: number;
+  minInstallment: number;
+  maxInstallment: number;
 }
 
 export default function CreditOptionBox(props: CreditOptionBoxProps) {
@@ -16,7 +16,8 @@ export default function CreditOptionBox(props: CreditOptionBoxProps) {
       </Card.Header>
       <Card.Body>
         <Text em>
-          {moneyFromNumber(props.min, "BRL")} a {moneyFromNumber(props.max, "BRL")}
+          {moneyFromNumber(props.minInstallment, "BRL")} a{" "}
+          {moneyFromNumber(props.maxInstallment, "BRL")}
         </Text>
       </Card.Body>
     </Card>

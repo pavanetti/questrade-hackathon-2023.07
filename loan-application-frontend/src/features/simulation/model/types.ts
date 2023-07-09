@@ -13,8 +13,8 @@ export const simulationResultSchema = yup.object({
     .array(
       yup.object({
         installments: yup.number().min(6).max(60).required(),
-        min: yup.number().required(),
-        max: yup.number().required(),
+        minInstallment: yup.number().required(),
+        maxInstallment: yup.number().required(),
       })
     )
     .required(),
