@@ -22,6 +22,7 @@
 		<None Remove="Domain\CreditSimulation\" />
 		<None Remove="Domain\Score\" />
 		<None Remove="Domain\Models\" />
+		<None Remove="Domain\Lead\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Configurations\" />
@@ -30,5 +31,6 @@
 		<Folder Include="Domain\CreditSimulation\" />
 		<Folder Include="Domain\Score\" />
 		<Folder Include="Domain\Models\" />
+		<Folder Include="Domain\Lead\" />
 	</ItemGroup>
 </Project>

@@ -8,6 +8,7 @@ namespace loan_application_api.Domain.Score
         {
         }
 
+        // TODO: Daily update and cache Internal Score Table
         async Task<int> IScoreService.Score(Models.Document document)
         {
             await Task.Delay(200);

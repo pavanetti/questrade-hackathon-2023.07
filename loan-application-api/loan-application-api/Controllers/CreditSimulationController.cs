@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using loan_application_api.Controllers.Models;
 using loan_application_api.Domain;
+using loan_application_api.Domain.Lead;
 using loan_application_api.Domain.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +19,13 @@ public class CreditSimulationController : ControllerBase
     private readonly ILogger<CreditSimulationController> logger;
 
     private readonly CreditSimulationService simulationService;
-    // LeadService leadService = new LeadService();
+    private readonly LeadService leadService;
 
     public CreditSimulationController(ILogger<CreditSimulationController> logger)
     {
         this.logger = logger;
         this.simulationService = new(logger);
+        this.leadService = new();
     }
 
     /// <summary>
@@ -43,7 +45,7 @@ public class CreditSimulationController : ControllerBase
         IEnumerable<CreditSimulationOption> options;
         try
         {
-            logger.LogDebug("Starting simulation: R$ " + simRequest.Request);
+            logger.LogDebug("Starting simulation: R$ {Request}", simRequest.Request);
             options = await simulationService.Simulations(new()
             {
                 Amount = simRequest.Request,
@@ -52,16 +54,12 @@ public class CreditSimulationController : ControllerBase
         }
         catch (InvalidDocumentException ex)
         {
-            logger.LogError(String.Format("Received invalid document: {0}", ex.Message));
+            logger.LogError("Received invalid document: {Message}", ex.Message);
             throw new BadHttpRequestException(ex.Message, ex);
         }
 
-        // TODO: Lead Service
-        // leadService.RegisterLead();
-        // leadService.SendSimulationByEmail(options, Contact {
-        //   Name = simulationRequest.FullName,
-        //   Email = simulationRequest.Email
-        // });
+        await leadService.SaveLead(simRequest.FullName, simRequest.Email, simRequest.Request);
+        _ = leadService.SendSimulationByEmail(simRequest.FullName, simRequest.Email, options);
         return new CreditSimulationResponse
         {
             Request = simRequest.Request,

@@ -8,6 +8,7 @@ public class SerasaScoreService : IScoreService
     {
     }
 
+    // TODO: Cache serasa score on Memcached/Redis for 24 hours
     async Task<int> IScoreService.Score(Models.Document document)
     {
         await Task.Delay(500);
