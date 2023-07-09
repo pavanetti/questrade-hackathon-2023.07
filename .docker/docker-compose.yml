@@ -10,6 +10,13 @@ services:
 
   web:
     image: questrade2023-web
-    build: ../loan-application-frontend/
+    build:
+      context: ../loan-application-frontend/
+      args:
+        - VITE_API_BASE_URL=/api
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
-      - "5173:80"
+      - "80:80"
+      - "443:443"
+      - "8080:80"
