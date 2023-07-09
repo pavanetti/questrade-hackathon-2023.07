@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    image: questrade2023-api
+    build: ../loan-application-api/loan-application-api/
+    command: --environment Development
+    ports:
+      - "5287:80"
+
+  web:
+    image: questrade2023-web
+    build: ../loan-application-frontend/
+    ports:
+      - "5173:80"
