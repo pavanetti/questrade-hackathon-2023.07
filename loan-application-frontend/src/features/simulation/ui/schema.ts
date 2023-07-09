@@ -1,7 +1,7 @@
-import { DOC_REGEX, numberFromPtBr } from "@/shared/utils";
 import * as yup from "yup";
 import { validate as isCPF } from "validation-br/dist/cpf";
 import { validate as isCNPJ } from "validation-br/dist/cnpj";
+import { DOC_REGEX, numberFromPtBr } from "@/shared/utils";
 
 const MIN_LOAN_VALUE = 2000;
 const MIN_LOAN_MESSAGE = "Insira um valor mínimo de R$ 2.000,00";

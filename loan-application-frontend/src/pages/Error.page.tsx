@@ -8,10 +8,8 @@ export default function ErrorPage() {
     <div className="flex h-screen items-center justify-center">
       <div className="text-center">
         <Text h1>Oops!</Text>
-        <Text p>Sorry, an unexpected error has occurred.</Text>
-        <Text p em>
-          {error.statusText || error.message}
-        </Text>
+        <Text>Sorry, an unexpected error has occurred.</Text>
+        <Text em>{error.statusText || error.message}</Text>
       </div>
     </div>
   );

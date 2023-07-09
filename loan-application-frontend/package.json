@@ -16,6 +16,9 @@
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@nextui-org/react": "1.0.0-beta.13",
+    "@tanstack/react-query": "4.29.19",
+    "axios": "1.4.0",
+    "date-fns": "2.30.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.45.1",
@@ -23,7 +26,8 @@
     "react-number-format": "5.2.2",
     "react-router-dom": "6.14.1",
     "validation-br": "1.4.4",
-    "yup": "1.2.0"
+    "yup": "1.2.0",
+    "zustand": "4.3.9"
   },
   "devDependencies": {
     "@types/node": "20.4.1",
